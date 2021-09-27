@@ -42,6 +42,7 @@ app.get('/api/rolls', (req, res) =>{
             } else {    //If there were no records found
                 res.send({
                     message: 'There were no records found',
+                    data: []    //We will pass back an empty array for no data found
                 })
             }
         }
