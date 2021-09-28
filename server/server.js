@@ -9,7 +9,6 @@ const database = new Database(process.env.MONGO_SRV, process.env.PORT); //Initia
 
 database.connect(); //connect to the db
 
-
 app.listen(database.getPort(), () => console.log('Listening on port:', database.getPort()));
 
 app.get('/api/rolls', async (req, res) =>{

@@ -2,8 +2,8 @@ const mongoose = require('mongoose');
 
 class Database{
     constructor(mongoSRV, port = 3000){ //set a default port if none is given
-        this.mongoSRV = mongoSRV;
-        this.port = port;
+        this._mongoSRV = mongoSRV;
+        this._port = port;
     }
 
     /**Set up stuff for the database */
@@ -14,12 +14,12 @@ class Database{
      * ex: Database.port
      */
     getPort(){
-        return this.port;
+        return this._port;
     }
 
     /**Method to connect to the database */
     async connect(){
-            await mongoose.connect(this.mongoSRV)
+            await mongoose.connect(this._mongoSRV)
             .then( () => console.log('Connected to database'))
             .catch( (err) => console.log('\n\nDatabase authentication failed\n', err));
     }
