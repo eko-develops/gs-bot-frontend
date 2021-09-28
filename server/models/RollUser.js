@@ -14,7 +14,7 @@ const RollUser = new Schema({
 })
 
 // https://www.geeksforgeeks.org/mongoose-mongoose-model-function/
-//First argument: name of the model. the method pluraizes the name and looks for a collection matching "users"
+//First argument: name of the model. the method pluraizes the name and looks for a collection matching "Rolls"
 const UserRoll = mongoose.model("Roll", RollUser);
 
 module.exports = UserRoll;

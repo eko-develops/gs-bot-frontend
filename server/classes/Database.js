@@ -1,5 +1,4 @@
 const mongoose = require('mongoose');
-const UserRoll = require('../models/RollUser.js');
 
 class Database{
     constructor(mongoSRV, port = 3000){ //set a default port if none is given
@@ -28,15 +27,17 @@ class Database{
 
     /**Helper methods to query database */
 
-    async getAllUserRolls(){
-        return await UserRoll.find({}).exec()   //empty query to search for all records
+    async getAll(model){
+        return await model.find({}).exec()   //empty query to search for all records
         .then( (data) => {
             if(data){
+                console.log('Retrieval from database success')
                 return {
                     message: 'Retrieval from database success',
                     data
                 }
             } else {    //If there were no records found
+                console.log('There were no records found')
                 return {
                     message: 'There were no records found',
                     data: []    //We will pass back an empty array for no data found
@@ -44,7 +45,7 @@ class Database{
             }
         })
         .catch( (err) => {
-            console.log(errorMessage, err);//log to server
+            console.log('Error getting data from database\n', err);//log to server
             return {
                 message: 'Error getting data from database',
                 error: {
