@@ -8,7 +8,6 @@ const Dashboard = () => {
         <main>
             <div className={styles.content}>
                 <SearchForm />
-                
                 <UserList />
             </div>
         </main>
