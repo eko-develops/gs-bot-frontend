@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { format, parseISO } from 'date-fns';
 
 import styles from "../styles/UserList.module.css";
 
@@ -6,7 +7,7 @@ const UserList = () => {
 
     const [users, setUsers] = useState([]);
 
-    useEffect(  () => {
+    useEffect(() => {
         fetch('http://localhost:3001/api/rolls')
         .then((res) => {
             return res.json();
@@ -16,6 +17,11 @@ const UserList = () => {
         })
         .catch(err => console.log(err))
     }, []); //fire the useEffect only once on first render
+
+    const parseDate = (ISOdate) => {
+        const date = parseISO(ISOdate);
+        return format(date, 'PPpp');
+    }
 
     return (
         <div className={styles.userListWrapper}>
@@ -27,8 +33,8 @@ const UserList = () => {
                             <h4>{user.username}</h4>
                             <p>id: {user._id}</p>
                             <p>total credits: {user.totalCredits}</p>
-                            <p>joined: {user.createdAt}</p>
-                            <p>last roll: {user.updatedAt}</p>
+                            <p>first roll: {parseDate(user.createdAt)}</p>
+                            <p>last roll: {parseDate(user.updatedAt)}</p>
                         </li>
                     ))
                     :
