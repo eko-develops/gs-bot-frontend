@@ -1,22 +1,11 @@
-import { useState, useEffect } from 'react';
 import { format, parseISO } from 'date-fns';
+import useFetch from '../hooks/useFetch';
 
 import styles from "../styles/UserList.module.css";
 
 const UserList = () => {
 
-    const [users, setUsers] = useState([]);
-
-    useEffect(() => {
-        fetch('http://localhost:3001/api/rolls')
-        .then((res) => {
-            return res.json();
-        })
-        .then((data) => {
-            setUsers(data.data);
-        })
-        .catch(err => console.log(err))
-    }, []); //fire the useEffect only once on first render
+    const { data: users } = useFetch('http://localhost:3001/api/rolls');
 
     const parseDate = (ISOdate) => {
         const date = parseISO(ISOdate);
