@@ -1,4 +1,5 @@
 const mongoose = require('mongoose');
+const model = require('../models/model');
 
 class Database{
     constructor(mongoSRV, port = 3000){ //set a default port if none is given
@@ -6,27 +7,27 @@ class Database{
         this._port = port;
     }
 
+    getUserRollModel(){
+        return model.UserRoll
+    }
+
     /**Set up stuff for the database */
 
-    /**Method to get the assigned port.
-     * Do I really need a getter for this? Or should I
-     * just access the variable from the obj?
-     * ex: Database.port
-     */
+    //Method to get assigned port
     getPort(){
         return this._port;
     }
 
-    /**Method to connect to the database */
+    //Method to connect to the database
     async connect(){
             await mongoose.connect(this._mongoSRV)
             .then( () => console.log('Connected to database'))
             .catch( (err) => console.log('\n\nDatabase authentication failed\n', err));
     }
 
-
     /**Helper methods to query database */
 
+    //Get all records from a model
     async getAll(model){
         return await model.find({}).exec()   //empty query to search for all records
         .then( (data) => {
