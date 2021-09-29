@@ -10,5 +10,5 @@ db.connect(); //connect to the db
 app.listen(db.getPort(), () => console.log('Listening on port:', db.getPort()));
 
 app.get('/api/rolls', async (req, res) =>{
-    res.send(await db.getAll(db.getUserRollModel()));
+    res.json(await db.getAll(db.getUserRollModel()));
 });
