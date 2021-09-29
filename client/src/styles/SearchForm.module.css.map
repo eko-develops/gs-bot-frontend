@@ -1,0 +1,9 @@
+{
+    "version": 3,
+    "mappings": "AAAA,AAAA,WAAW,CAAA;EACP,UAAU,EAAE,MAAM;EAClB,aAAa,EAAE,IAAI;CAKtB;;AAPD,AAII,WAJO,CAIP,KAAK,CAAA;EACD,KAAK,EAAE,OAAO;CACjB",
+    "sources": [
+        "SearchForm.module.scss"
+    ],
+    "names": [],
+    "file": "SearchForm.module.css"
+}

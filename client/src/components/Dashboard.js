@@ -1,9 +1,18 @@
-const Home = () => {
+import SearchForm from './SearchForm';
+import UserList from './UserList';
+
+import styles from '../styles/Dashboard.module.css';
+
+const Dashboard = () => {
     return (
         <main>
-            <h2>Dashboard</h2>
+            <div className={styles.content}>
+                <SearchForm />
+                
+                <UserList />
+            </div>
         </main>
     )
 }
 
-export default Home
+export default Dashboard
