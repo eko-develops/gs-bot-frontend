@@ -7,7 +7,6 @@ const SearchForm = ({handleQuery, query}) => {
         <div className={styles.searchForm}>
             <h2>search for a user..</h2>
             <input value={query} onChange={(e) => handleQuery(e)} type="text"></input>
-            {query}
         </div>
     )
 }

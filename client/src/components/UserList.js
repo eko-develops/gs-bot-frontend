@@ -27,7 +27,7 @@ const UserList = ({data: users, error, loading, query, setCount}) => {
                     // for every user, create a card
                     filteredUsers ? filteredUsers.map( (user) => (
                         <li key={user._id} className={styles.userCard}>
-                            <h4>{user.username}</h4>
+                            <a href="#"><h4>{user.username}</h4></a>
                             <p>id: {user._id}</p>
                             <p>total credits: {user.totalCredits}</p>
                             <p>first roll: {parseDate(user.createdAt)}</p>
