@@ -3,7 +3,7 @@ import {useState, useEffect} from 'react';
 
 import styles from "../styles/UserList.module.css";
 
-const UserList = ({data: users, error, loading, query}) => {
+const UserList = ({data: users, error, loading, query, setCount}) => {
 
     const [filteredUsers, setFilteredUsers] = useState([]);
 
@@ -15,7 +15,8 @@ const UserList = ({data: users, error, loading, query}) => {
     useEffect(() => {
         const filterUsers = users.filter( (user) => user.username.toLowerCase().includes(query) );
         setFilteredUsers(filterUsers);
-    }, [users, query])
+        setCount(filterUsers.length);
+    }, [users, query, setCount])
 
     return (
         <div className={styles.userListWrapper}>

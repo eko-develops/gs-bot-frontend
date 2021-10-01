@@ -10,18 +10,19 @@ const Dashboard = () => {
     const { data, error, loading } = useFetch('http://localhost:3001/api/rolls');
 
     const [query, setQuery] = useState("");
+    const [count, setCount] = useState(0);
 
     const handleQuery = (e) => {
         console.log(e.target.value);
         setQuery(e.target.value);
     }
 
-
     return (
         <main>
             <div className={styles.content}>
-                <SearchForm data={data} handleQuery={handleQuery} query={query} />
-                <UserList data={data} error={error} loading={loading} query={query} />
+                <SearchForm handleQuery={handleQuery} query={query} />
+                <p style={{textAlign: 'center'}}>Results: {count}</p>
+                <UserList data={data} error={error} loading={loading} query={query} setCount={setCount}/>
             </div>
         </main>
     )

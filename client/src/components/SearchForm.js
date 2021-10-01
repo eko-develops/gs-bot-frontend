@@ -2,7 +2,6 @@
 import styles from '../styles/SearchForm.module.css';
 
 const SearchForm = ({handleQuery, query}) => {
-
    
     return (
         <div className={styles.searchForm}>
