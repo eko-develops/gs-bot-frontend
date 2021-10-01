@@ -7,7 +7,6 @@ const db = new Database(process.env.MONGO_SRV, process.env.PORT); //Initialize a
 
 db.connect(); //connect to the db
 
-// app.listen(db.getPort(), () => console.log('Listening on port:', db.getPort()));
 app.listen(db.getPort(), () => {
     console.log('Listening on port:', db.getPort())
     setInterval( () => {

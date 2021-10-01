@@ -27,7 +27,7 @@ const useFetch = (url) => {
                 setIsLoading(false);
             });
         }, 2000);
-    }, [url]); //fire the useEffect only once on first render
+    }, [url]); //when the url changes, this useEffect will fire
 
 
     return {
