@@ -4,24 +4,36 @@ import {useState, useEffect} from 'react';
 const useFetch = (url) => {
 
     const [data, setData] = useState([]);
+    const [isLoading, setIsLoading] = useState(true);
+    const [isError, setIsError] = useState(false);
 
     useEffect(() => {
-        fetch(url)
-        .then((res) => {
-            if(!res.ok){
-                throw Error('Could not fetch...');
-            }
-            return res.json();
-        })
-        .then((data) => {
-            setData(data.data);
-        })
-        .catch(err => console.log(err))
+        setTimeout(() => {
+            fetch(url)
+            .then((res) => {
+                if(!res.ok){
+                    throw Error('Response is not ok from fetch...');
+                }
+                return res.json();
+            })
+            .then((data) => {
+                setIsError(false);
+                setIsLoading(false);
+                setData(data.data);
+            })
+            .catch(err => {
+                console.log(err)
+                setIsError(true);
+                setIsLoading(false);
+            });
+        }, 2000);
     }, [url]); //fire the useEffect only once on first render
 
 
     return {
-        data
+        data,
+        error: isError,
+        loading: isLoading
     }
 }
 

@@ -5,7 +5,7 @@ import styles from "../styles/UserList.module.css";
 
 const UserList = () => {
 
-    const { data: users } = useFetch('http://localhost:3001/api/rolls');
+    const { data: users, error, loading } = useFetch('http://localhost:3001/api/rolls');
 
     const parseDate = (ISOdate) => {
         const date = parseISO(ISOdate);
@@ -15,6 +15,8 @@ const UserList = () => {
     return (
         <div className={styles.userListWrapper}>
             <ul>
+                {loading && <h4 style={{textAlign: "center"}}>Loading...</h4>}
+                {error && <h4 style={{textAlign: "center"}}>Error getting data... {error}</h4>}
                 {
                     // for every user, create a card
                    users ? users.map( (user) => (
