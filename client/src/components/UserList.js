@@ -1,13 +1,21 @@
 import { format, parseISO } from 'date-fns';
+import {useState, useEffect} from 'react';
 
 import styles from "../styles/UserList.module.css";
 
-const UserList = ({data: users, error, loading}) => {
+const UserList = ({data: users, error, loading, query}) => {
+
+    const [filteredUsers, setFilteredUsers] = useState([]);
 
     const parseDate = (ISOdate) => {
         const date = parseISO(ISOdate);
         return format(date, 'PPpp');
     }
+
+    useEffect(() => {
+        const filterUsers = users.filter( (user) => user.username.toLowerCase().includes(query) );
+        setFilteredUsers(filterUsers);
+    }, [users, query])
 
     return (
         <div className={styles.userListWrapper}>
@@ -16,7 +24,7 @@ const UserList = ({data: users, error, loading}) => {
                 {error && <h4 style={{textAlign: "center"}}>Error getting data... {error}</h4>}
                 {
                     // for every user, create a card
-                   users ? users.map( (user) => (
+                    filteredUsers ? filteredUsers.map( (user) => (
                         <li key={user._id} className={styles.userCard}>
                             <h4>{user.username}</h4>
                             <p>id: {user._id}</p>
@@ -28,6 +36,7 @@ const UserList = ({data: users, error, loading}) => {
                     :
                     <h2>Nothing in users..</h2>
                 }
+                
             </ul>
         </div>
         

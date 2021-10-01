@@ -1,10 +1,14 @@
+
 import styles from '../styles/SearchForm.module.css';
 
-const SearchForm = () => {
+const SearchForm = ({handleQuery, query}) => {
+
+   
     return (
         <div className={styles.searchForm}>
             <h2>search for a user..</h2>
-            <input type="text"></input>
+            <input value={query} onChange={(e) => handleQuery(e)} type="text"></input>
+            {query}
         </div>
     )
 }
