@@ -1,5 +1,7 @@
 import { format, parseISO } from 'date-fns';
 import {useState, useEffect} from 'react';
+import { Link } from 'react-router-dom';
+
 
 import styles from "../styles/UserList.module.css";
 
@@ -27,7 +29,7 @@ const UserList = ({data: users, error, loading, query, setCount}) => {
                     // for every user, create a card
                     filteredUsers ? filteredUsers.map( (user) => (
                         <li key={user._id} className={styles.userCard}>
-                            <a href="#"><h4>{user.username}</h4></a>
+                            <Link to={`/user/${user._id}`}><h4>{user.username}</h4></Link>
                             <p>id: {user._id}</p>
                             <p>total credits: {user.totalCredits}</p>
                             <p>first roll: {parseDate(user.createdAt)}</p>

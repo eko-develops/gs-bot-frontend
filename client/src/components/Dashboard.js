@@ -1,7 +1,7 @@
 import SearchForm from './SearchForm';
 import UserList from './UserList';
 import useFetch from '../hooks/useFetch';
-import {useState} from 'react'
+import { useState } from 'react'
 
 import styles from '../styles/Dashboard.module.css';
 

@@ -8,8 +8,11 @@ const useFetch = (url) => {
     const [isError, setIsError] = useState(false);
 
     useEffect(() => {
+
+        const abortCont = new AbortController();
+
         setTimeout(() => {
-            fetch(url)
+            fetch(url, { signal: abortCont.signal})
             .then((res) => {
                 if(!res.ok){
                     throw Error('Response is not ok from fetch...');
@@ -23,10 +26,17 @@ const useFetch = (url) => {
             })
             .catch(err => {
                 console.log(err)
-                setIsError(true);
-                setIsLoading(false);
+                if(err.name === 'AbortError'){
+                    console.log('fetch aborted..');
+                } else {
+                    setIsError(true);
+                    setIsLoading(false);
+                }
             });
-        }, 2000);
+        }, 800);
+
+
+        return () => abortCont;
     }, [url]); //when the url changes, this useEffect will fire
 
 

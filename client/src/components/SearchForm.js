@@ -1,4 +1,3 @@
-
 import styles from '../styles/SearchForm.module.css';
 
 const SearchForm = ({handleQuery, query}) => {
