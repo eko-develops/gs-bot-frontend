@@ -1,11 +1,8 @@
 import { format, parseISO } from 'date-fns';
-import useFetch from '../hooks/useFetch';
 
 import styles from "../styles/UserList.module.css";
 
-const UserList = () => {
-
-    const { data: users, error, loading } = useFetch('http://localhost:3001/api/rolls');
+const UserList = ({data: users, error, loading}) => {
 
     const parseDate = (ISOdate) => {
         const date = parseISO(ISOdate);
