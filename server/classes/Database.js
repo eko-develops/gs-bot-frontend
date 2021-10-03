@@ -1,5 +1,6 @@
 const mongoose = require('mongoose');
 const model = require('../models/model');
+const Schema = mongoose.Schema;
 
 class Database{
     constructor(mongoSRV, port = 3000){ //set a default port if none is given
@@ -56,8 +57,10 @@ class Database{
         });
     }
 
-    static staticFunction(){
-        return "i am a static function";
+    static newModel(schema, modelName){
+        const schemaObj = new Schema(...schema);
+        const model = mongoose.model(modelName, schemaObj);
+        return model;
     }
 
 
