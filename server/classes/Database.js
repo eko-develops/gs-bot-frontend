@@ -56,7 +56,9 @@ class Database{
         });
     }
 
-
+    static staticFunction(){
+        return "i am a static function";
+    }
 
 
 }

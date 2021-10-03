@@ -1,5 +1,9 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
+const Database = require('../classes/Database.js');
+
+console.log(Database);
+
 
 const RollUser = new Schema({
     _id: {

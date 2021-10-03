@@ -5,8 +5,10 @@ const app = express();
 const Database = require('./classes/Database.js');  //require the Database class
 const db = new Database(process.env.MONGO_SRV, process.env.PORT); //Initialize a new Database object
 
-db.connect(); //connect to the db
+// console.log(Database.staticFunction());
+console.log('from server.js', Database);
 
+db.connect(); //connect to the db
 app.listen(db.getPort(), () => {
     console.log('Listening on port:', db.getPort())
     setInterval( () => {
