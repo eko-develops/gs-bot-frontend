@@ -3,4 +3,4 @@
  * 
  */
 
-exports.UserRoll = require('./RollUser');
+exports.UserRoll = require('./UserRoll');
