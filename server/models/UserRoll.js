@@ -1,6 +1,6 @@
-const Database = require('../classes/Database.js');
+const Mongoose = require('../classes/Mongoose.js');
 
-console.log('from /models/UserRoll.js', Database);
+console.log('from /models/UserRoll.js', Mongoose);
 
 const schema = [{
     _id: {
@@ -14,6 +14,6 @@ const schema = [{
     timestamps: true
 }];
 
-const UserRoll = Database.getModel(schema, "Roll");
+const UserRoll = Mongoose.newModel(schema, "Roll");
 
 module.exports = UserRoll;
