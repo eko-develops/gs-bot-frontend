@@ -14,6 +14,5 @@ app.listen(db.getPort(), () => {
 })
 
 app.get('/api/rolls', async (req, res) =>{
-    // res.json(await db.getAll(db.getUserRollModel()));
     res.json(await db.findAllRecords());
 });
