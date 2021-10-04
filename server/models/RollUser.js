@@ -14,11 +14,6 @@ const schema = [{
     timestamps: true
 }];
 
-const UserRoll = Database.newModel(schema, "Roll");
-
-
-// https://www.geeksforgeeks.org/mongoose-mongoose-model-function/
-//First argument: name of the model. the method pluraizes the name and looks for a collection matching "Rolls"
-// const UserRoll = mongoose.model("Roll", RollUser);
+const UserRoll = Database.getModel(schema, "Roll");
 
 module.exports = UserRoll;
